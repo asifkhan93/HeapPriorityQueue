@@ -35,12 +35,6 @@ namespace HeapPriorityQueue
             }
         }
 
-        private void Swap(int i, int j)
-        {
-            int temp = minHeap[i];
-            minHeap[i] = minHeap[j];
-            minHeap[j] = temp;
-        }
         public int ExtractMin()
         {
             if (minHeap.Count == 0)
@@ -51,10 +45,43 @@ namespace HeapPriorityQueue
 
             minHeap[0] = minHeap[last];
             minHeap.RemoveAt(last);
-           //HeapifyDown();
+            HeapifyDown();
             return min;
         }
+        private void HeapifyDown() 
+        {
+            int index = 0;
 
+            while (true) 
+            {
+                int leftChild = 2 * index + 1;
+                int rightChild = 2 * index + 2;
+
+                int smallestIndex = index;
+
+                if (leftChild < minHeap.Count &&
+                    minHeap[leftChild] < minHeap[smallestIndex]) 
+                {
+                    smallestIndex = leftChild;
+                }
+                if (rightChild < minHeap.Count &&
+                     minHeap[rightChild] < minHeap[smallestIndex])
+                {
+                    smallestIndex = rightChild;
+                }
+                if (smallestIndex == index)
+                    break;
+
+                Swap(index, smallestIndex);
+                index = smallestIndex;
+            }
+        }
+        private void Swap(int i, int j)
+        {
+            int temp = minHeap[i];
+            minHeap[i] = minHeap[j];
+            minHeap[j] = temp;
+        }
         public List<int> GetHeap()
         {
             return  new List<int>(minHeap);

@@ -18,8 +18,13 @@ namespace HeapPriorityQueue
             minHeap.Insert(65);
             minHeap.Insert(30);
 
-            Console.Write("Heap Elements: " + string.Join(", ", minHeap.GetHeap()));
-
+            Console.WriteLine("Heap Elements: " + string.Join(", ", minHeap.GetHeap()));
+            Console.WriteLine("Extracted Min: " + minHeap.ExtractMin());
+            Console.WriteLine("Heap Elements: " + string.Join(", ", minHeap.GetHeap()));
+            Console.WriteLine("Extracted Min: " + minHeap.ExtractMin());
+            Console.WriteLine("Heap Elements: " + string.Join(", ", minHeap.GetHeap()));
+            Console.WriteLine("Extracted Min: " + minHeap.ExtractMin());
+            Console.WriteLine("Heap Elements: " + string.Join(", ", minHeap.GetHeap()));
         }
     }
 }
